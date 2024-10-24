@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashScreen">
 
+    <fragment
+        android:id="@+id/splashScreen"
+        android:name="uz.gita.latizx.onlinemarketexam6.ui.splash.SplashScreen"
+        android:label="SplashScreen"
+        tools:layout="@layout/screen_splash">
+        <action
+            android:id="@+id/action_splashScreen_to_loginScreen"
+            app:destination="@id/loginScreen" />
+        <action
+            android:id="@+id/action_splashScreen_to_mainScreen"
+            app:destination="@id/mainScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginScreen"
+        android:name="uz.gita.latizx.onlinemarketexam6.ui.login.LoginScreen"
+        android:label="LoginScreen"
+        tools:layout="@layout/screen_login" />
+    <fragment
+        android:id="@+id/mainScreen"
+        android:name="uz.gita.latizx.onlinemarketexam6.ui.home.MainScreen"
+        android:label="MainScreen"
+        tools:layout="@layout/screen_main" />
 </navigation>

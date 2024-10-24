@@ -4,4 +4,7 @@
     <color name="dimgray">#696969</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#004CFF</color>
+    <color name="status_bar_color">#FFFFFF</color>
+    <color name="home_status_bar_color">#2196F3</color>
+    <color name="profile_status_bar_color">#4CAF50</color>
 </resources>

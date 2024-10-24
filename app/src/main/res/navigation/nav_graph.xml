@@ -42,4 +42,18 @@
         android:name="uz.gita.latizx.onlinemarketexam6.ui.catalog.CatalogScreen"
         android:label="CatalogScreen"
         tools:layout="@layout/screen_catalog" />
+    <fragment
+        android:id="@+id/profileScreen"
+        android:name="uz.gita.latizx.onlinemarketexam6.ui.profil.ProfileScreen"
+        android:label="ProfileScreen"
+        tools:layout="@layout/screen_profile" >
+        <action
+            android:id="@+id/action_profileScreen_to_personalInfo"
+            app:destination="@id/personalInfo" />
+    </fragment>
+    <fragment
+        android:id="@+id/personalInfo"
+        tools:layout="@layout/screen_personal_info"
+        android:name="uz.gita.latizx.onlinemarketexam6.ui.personal.PersonalInfo"
+        android:label="PersonalInfo" />
 </navigation>

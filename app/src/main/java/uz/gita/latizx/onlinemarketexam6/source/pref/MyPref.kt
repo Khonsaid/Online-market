@@ -2,6 +2,7 @@ package uz.gita.latizx.onlinemarketexam6.source.pref
 
 import android.content.SharedPreferences
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import uz.gita.latizx.onlinemarketexam6.models.UserModel
 
 class MyPref private constructor() {
@@ -19,7 +20,10 @@ class MyPref private constructor() {
         fun getInstance(): MyPref = instance
     }
 
-    fun getUser() = pref.getString("user", null)
+    fun getUser(): UserModel {
+        val type = object : TypeToken<UserModel>() {}.type
+        return gson.fromJson(pref.getString("user", null), type)
+    }
 
     fun setUser(userModel: UserModel) {
         pref.edit().putString("user", gson.toJson(userModel)).apply()

@@ -13,7 +13,7 @@
         android:icon="@drawable/ic_shopping_cart"
         android:title="Savat" />
     <item
-        android:id="@+id/cabinetScreen"
+        android:id="@+id/profileScreen"
         android:icon="@drawable/ic_user"
         android:title="Kabinet" />
 </menu>

@@ -1,7 +1,6 @@
 package uz.gita.latizx.onlinemarketexam6.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -35,8 +34,8 @@ class MainActivity : AppCompatActivity() {
         binding.btmNavView.let { bottomNav ->
             navController.addOnDestinationChangedListener { _, destination, _ ->
                 when (destination.id) {
-                    R.id.splashScreen, R.id.loginScreen -> bottomNav.visibility = View.GONE
-                    else -> bottomNav.visibility = View.VISIBLE
+                    R.id.mainScreen, R.id.catalogScreen, R.id.profileScreen -> bottomNav.visibility = View.VISIBLE
+                    else -> bottomNav.visibility = View.GONE
                 }
             }
         }

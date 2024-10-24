@@ -1,10 +1,11 @@
-package uz.gita.latizx.onlinemarketexam6
+package uz.gita.latizx.onlinemarketexam6.ui
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import uz.gita.latizx.onlinemarketexam6.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

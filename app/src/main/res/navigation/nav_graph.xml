@@ -12,19 +12,34 @@
         tools:layout="@layout/screen_splash">
         <action
             android:id="@+id/action_splashScreen_to_loginScreen"
-            app:destination="@id/loginScreen" />
+            app:destination="@id/loginScreen"
+            app:popUpTo="@id/splashScreen"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_splashScreen_to_mainScreen"
-            app:destination="@id/mainScreen" />
+            app:destination="@id/mainScreen"
+            app:popUpTo="@id/splashScreen"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/loginScreen"
         android:name="uz.gita.latizx.onlinemarketexam6.ui.login.LoginScreen"
         android:label="LoginScreen"
-        tools:layout="@layout/screen_login" />
+        tools:layout="@layout/screen_login">
+        <action
+            android:id="@+id/action_loginScreen_to_mainScreen"
+            app:destination="@id/mainScreen"
+            app:popUpTo="@id/loginScreen"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/mainScreen"
         android:name="uz.gita.latizx.onlinemarketexam6.ui.home.MainScreen"
         android:label="MainScreen"
         tools:layout="@layout/screen_main" />
+    <fragment
+        android:id="@+id/catalogScreen"
+        android:name="uz.gita.latizx.onlinemarketexam6.ui.catalog.CatalogScreen"
+        android:label="CatalogScreen"
+        tools:layout="@layout/screen_catalog" />
 </navigation>

@@ -22,10 +22,19 @@ class MyPref private constructor() {
 
     fun getUser(): UserModel {
         val type = object : TypeToken<UserModel>() {}.type
+        return gson.fromJson(pref.getString("user", ""), type)
+    }
+
+    fun checkUser(): UserModel? {
+        val type = object : TypeToken<UserModel>() {}.type
         return gson.fromJson(pref.getString("user", null), type)
     }
 
     fun setUser(userModel: UserModel) {
         pref.edit().putString("user", gson.toJson(userModel)).apply()
+    }
+
+    fun deleteUser() {
+        pref.edit().remove("user").apply()
     }
 }

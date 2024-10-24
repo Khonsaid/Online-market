@@ -25,7 +25,7 @@ class SplashScreen : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         Handler(Looper.getMainLooper()).postDelayed({
             if (MyPref.getInstance()
-                    .getUser() != null
+                    .checkUser() != null
             ) findNavController().navigate(SplashScreenDirections.actionSplashScreenToMainScreen())
             else binding.btnStart.visibility = View.VISIBLE
         }, 300)

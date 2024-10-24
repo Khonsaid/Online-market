@@ -76,7 +76,7 @@
             android:background="@drawable/bg_input"
             android:hint="Your age"
             android:inputType="number"
-            android:maxLength="18"
+            android:maxLength="3"
             android:maxLines="1"
             android:paddingStart="28dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -162,7 +162,7 @@
         android:background="@drawable/bg_btn"
         android:enabled="false"
         android:fontFamily="@font/nunito_sans_regular"
-        android:text="Save"
+        android:text="Saqlash"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="18sp"

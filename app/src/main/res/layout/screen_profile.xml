@@ -95,6 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             style="@style/LogoutButtonStyle"
+            android:textColor="#DE1135"
             android:drawableStart="@drawable/ic_logout"
             android:drawablePadding="8dp"
             android:text="Log Out"

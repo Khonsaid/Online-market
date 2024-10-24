@@ -2,7 +2,7 @@
 <resources>
     <style name="LogoutButtonStyle" parent="Widget.AppCompat.Button.Borderless">
         <item name="android:background">?attr/selectableItemBackground</item>
-        <item name="android:textColor">#DE1135</item>
+        <item name="android:textColor">@color/blue</item>
         <item name="android:textAllCaps">false</item>
     </style>
 </resources>

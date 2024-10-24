@@ -1,24 +1,48 @@
-package uz.gita.latizx.onlinemarketexam6.ui.login
+package uz.gita.latizx.onlinemarketexam6.ui.personal
 
 import uz.gita.latizx.onlinemarketexam6.models.UserModel
 
-class LoginPresenter(private val view: LoginContract.View) : LoginContract.Presenter {
-    private val model: LoginContract.Model = LoginModel()
+class PersonalInfoPresenter(private val view: PersonalInfoContract.View) : PersonalInfoContract.Presenter {
+    private val model: PersonalInfoContract.Model = PersonalInfoModel()
+    private val user = model.getUserData()
+    private var isFullNameValid = true
+    private var isAgeValid = true
+    private var isPhoneValid = true
+    private var isNickNameValid = true
+    private var isPasswordValid = true
 
-    private var isFullNameValid = false
-    private var isAgeValid = false
-    private var isPhoneValid = false
-    private var isNickNameValid = false
-    private var isPasswordValid = false
+    private var isFullNameChanged = false
+    private var isAgeChanged = false
+    private var isPhoneChanged = false
+    private var isNickNameChanged = false
+    private var isPasswordChanged = false
+
+    init {
+        view.loadData(user)
+    }
+
+    override fun clickDeleteUser() {
+        view.showDeleteDialog()
+    }
+
+    override fun deleteUser() {
+        model.deleteUser()
+        view.openLoginScreen()
+    }
 
     override fun clickSaveBtn(fullName: String, age: String, phone: String, nickName: String, password: String) {
         if (validateAllFields(fullName, age, phone, nickName, password)) {
-            model.saveUser(UserModel(fullName, age.toInt(), phone, nickName, password))
-            view.showSuccessDialogAndOpenHomeScreen()
+            model.saveUserData(UserModel(fullName, age.toInt(), phone, nickName, password))
+            view.showSuccessDialogAndOpenPrevScreen()
         }
     }
 
+    override fun clickBack() {
+        view.openPrevScreen()
+    }
+
     override fun setFullNameListener(fullName: String) {
+        isFullNameChanged = fullName != user.fullName
         isFullNameValid = when {
             fullName.isEmpty() -> {
                 view.errorFullName("Full name cannot be empty!")
@@ -40,6 +64,7 @@ class LoginPresenter(private val view: LoginContract.View) : LoginContract.Prese
 
     override fun setAgeListener(age: String) {
         if (age.isBlank() || age.isEmpty()) return
+        isAgeChanged = age != user.age.toString()
         isAgeValid = when {
             age.toInt() < 11 -> {
                 view.errorAge("Age must be at least 11")
@@ -60,6 +85,7 @@ class LoginPresenter(private val view: LoginContract.View) : LoginContract.Prese
     }
 
     override fun setPhoneListener(phone: String) {
+        isPhoneChanged = phone != user.phoneNumber
         isPhoneValid = when {
             !phone.matches(".*[0-9].*".toRegex()) -> {
                 view.errorPhone("Phone number must contain only digits")
@@ -80,6 +106,8 @@ class LoginPresenter(private val view: LoginContract.View) : LoginContract.Prese
     }
 
     override fun setNickNameListener(nickName: String) {
+        isNickNameChanged = nickName != user.nickName
+
         isNickNameValid = when {
             nickName.isEmpty() -> {
                 view.errorNickName("Nickname cannot be empty!")
@@ -96,10 +124,12 @@ class LoginPresenter(private val view: LoginContract.View) : LoginContract.Prese
                 true
             }
         }
+
         checkFormValidity()
     }
 
     override fun setPasswordListener(password: String) {
+        isPasswordChanged = password != user.password
         isPasswordValid = when {
             password.isBlank() -> {
                 view.errorPassword("Password cannot be empty!")
@@ -135,7 +165,8 @@ class LoginPresenter(private val view: LoginContract.View) : LoginContract.Prese
     }
 
     private fun checkFormValidity() {
-        view.enableBtn(isFullNameValid && isAgeValid && isPhoneValid && isNickNameValid && isPasswordValid)
+        val isChanged = isFullNameChanged || isAgeChanged || isPhoneChanged || isNickNameChanged || isPasswordChanged
+        view.enableBtn(isChanged && isFullNameValid && isAgeValid && isPhoneValid && isNickNameValid && isPasswordValid)
     }
 
     private fun validateAllFields(fullName: String, age: String, phone: String, nickName: String, password: String): Boolean {

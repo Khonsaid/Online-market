@@ -13,11 +13,18 @@
         <action
             android:id="@+id/action_splashScreen_to_loginScreen"
             app:destination="@id/loginScreen"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
             app:popUpTo="@id/splashScreen"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_splashScreen_to_mainScreen"
             app:destination="@id/mainScreen"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
             app:popUpTo="@id/splashScreen"
             app:popUpToInclusive="true" />
     </fragment>
@@ -29,6 +36,10 @@
         <action
             android:id="@+id/action_loginScreen_to_mainScreen"
             app:destination="@id/mainScreen"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
             app:popUpTo="@id/loginScreen"
             app:popUpToInclusive="true" />
     </fragment>
@@ -46,14 +57,26 @@
         android:id="@+id/profileScreen"
         android:name="uz.gita.latizx.onlinemarketexam6.ui.profil.ProfileScreen"
         android:label="ProfileScreen"
-        tools:layout="@layout/screen_profile" >
+        tools:layout="@layout/screen_profile">
         <action
             android:id="@+id/action_profileScreen_to_personalInfo"
-            app:destination="@id/personalInfo" />
+            app:destination="@id/personalInfo"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/personalInfo"
-        tools:layout="@layout/screen_personal_info"
-        android:name="uz.gita.latizx.onlinemarketexam6.ui.personal.PersonalInfo"
-        android:label="PersonalInfo" />
+        android:name="uz.gita.latizx.onlinemarketexam6.ui.personal.PersonalInfoScreen"
+        android:label="PersonalInfo"
+        tools:layout="@layout/screen_personal_info">
+        <action
+            android:id="@+id/action_personalInfo_to_loginScreen"
+            app:destination="@id/loginScreen"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
 </navigation>

@@ -1,6 +1,254 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:background="?selectableItemBackgroundBorderless"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center"
+            android:src="@drawable/ic_left"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_title_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/raleway_bold"
+            android:text="Profil sozlamalari"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center">
+
+            <TextView
+                style="@style/style_text_presonal_info"
+                android:text="Full name"
+                app:layout_constraintBottom_toTopOf="@+id/input_full_name_layout"
+                app:layout_constraintStart_toStartOf="@id/input_full_name_layout" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_full_name_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                app:endIconMode="clear_text"
+                app:layout_constraintBottom_toTopOf="@id/input_age_layout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_full_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_input_in_profile"
+                    android:inputType="text"
+                    android:maxLength="18"
+                    android:maxLines="1"
+                    android:paddingStart="28dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                style="@style/style_text_presonal_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your age"
+                app:layout_constraintBottom_toTopOf="@+id/input_age_layout"
+                app:layout_constraintStart_toStartOf="@id/input_age_layout" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_age_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="36dp"
+                app:layout_constraintBottom_toTopOf="@id/input_phone_layout"
+                app:layout_constraintEnd_toEndOf="@+id/input_full_name_layout"
+                app:layout_constraintStart_toStartOf="@+id/input_full_name_layout"
+                app:layout_constraintTop_toBottomOf="@+id/input_full_name_layout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_age"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_input_in_profile"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:maxLines="1"
+                    android:paddingStart="28dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                style="@style/style_text_presonal_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your phone"
+                app:layout_constraintBottom_toTopOf="@+id/input_phone_layout"
+                app:layout_constraintStart_toStartOf="@id/input_phone_layout" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_phone_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="36dp"
+                app:endIconMode="clear_text"
+                app:layout_constraintBottom_toTopOf="@id/input_nick_layout"
+                app:layout_constraintEnd_toEndOf="@+id/input_age_layout"
+                app:layout_constraintStart_toStartOf="@+id/input_age_layout"
+                app:layout_constraintTop_toBottomOf="@+id/input_age_layout"
+                app:passwordToggleEnabled="true">
+
+                <com.vicmikhailau.maskededittext.MaskedEditText
+                    android:id="@+id/input_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_input_in_profile"
+                    android:inputType="phone"
+                    android:lines="1"
+                    android:maxLength="18"
+                    android:maxLines="1"
+                    android:paddingStart="28dp"
+                    app:mask="### (##) ### ## ##" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                style="@style/style_text_presonal_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nick name"
+                app:layout_constraintBottom_toTopOf="@+id/input_nick_layout"
+                app:layout_constraintStart_toStartOf="@id/input_nick_layout" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_nick_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="36dp"
+                app:endIconMode="clear_text"
+                app:layout_constraintBottom_toTopOf="@id/input_password_layout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/input_phone_layout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_nick_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_input_in_profile"
+                    android:inputType="text"
+                    android:maxLength="18"
+                    android:maxLines="1"
+                    android:paddingStart="28dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                style="@style/style_text_presonal_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password"
+                app:layout_constraintBottom_toTopOf="@+id/input_password_layout"
+                app:layout_constraintStart_toStartOf="@id/input_password_layout" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_password_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="36dp"
+                app:layout_constraintBottom_toTopOf="@id/btn_save"
+                app:layout_constraintEnd_toEndOf="@+id/input_nick_layout"
+                app:layout_constraintStart_toStartOf="@+id/input_nick_layout"
+                app:layout_constraintTop_toBottomOf="@+id/input_nick_layout"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_input_in_profile"
+                    android:inputType="textPassword"
+                    android:maxLength="18"
+                    android:maxLines="1"
+                    android:paddingStart="28dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_save"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_margin="32dp"
+                android:background="@drawable/bg_btn"
+                android:enabled="false"
+                android:fontFamily="@font/nunito_sans_regular"
+                android:text="Saqlash"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@id/btn_delete_user"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/input_password_layout" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_delete_user"
+                style="@style/LogoutButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="24dp"
+                android:drawableStart="@drawable/ic_delete_outline"
+                android:drawablePadding="8dp"
+                android:text="Accountni o'chirish"
+                app:layout_constraintEnd_toEndOf="@+id/btn_save"
+                app:layout_constraintStart_toStartOf="@+id/btn_save"
+                app:layout_constraintTop_toBottomOf="@+id/btn_save" />
+
+            <TextView
+                style="@style/style_text_presonal_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:gravity="center"
+                android:paddingHorizontal="16dp"
+                android:text="Siz accountni va shaxsiy ma'lumotlaringizni butunlay o'chirishigiz mumkin"
+                android:textSize="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/btn_delete_user"
+                app:layout_constraintStart_toStartOf="@+id/btn_delete_user"
+                app:layout_constraintTop_toBottomOf="@+id/btn_delete_user" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

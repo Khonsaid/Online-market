@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.forEach
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -31,11 +32,21 @@ class MainActivity : AppCompatActivity() {
 
         binding.btmNavView.setupWithNavController(navController)
 
+        binding.btmNavView.apply {
+            menu.forEach { removeBadge(it.itemId) }
+        }
+
+//        var badge =  binding.btmNavView.getOrCreateBadge(R.id.catalogScreen);
+//        badge.isVisible = true;
+//        badge.number = 99;
+
         binding.btmNavView.let { bottomNav ->
             navController.addOnDestinationChangedListener { _, destination, _ ->
                 when (destination.id) {
                     R.id.mainScreen, R.id.catalogScreen, R.id.profileScreen -> bottomNav.visibility = View.VISIBLE
-                    else -> bottomNav.visibility = View.GONE
+                    else -> {
+                        bottomNav.visibility = View.GONE
+                    }
                 }
             }
         }

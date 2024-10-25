@@ -52,7 +52,15 @@
         android:id="@+id/catalogScreen"
         android:name="uz.gita.latizx.onlinemarketexam6.ui.catalog.CatalogScreen"
         android:label="CatalogScreen"
-        tools:layout="@layout/screen_catalog" />
+        tools:layout="@layout/screen_catalog">
+        <action
+            android:id="@+id/action_catalogScreen_to_itemsByCategoryScreen"
+            app:destination="@id/itemsByCategoryScreen"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/profileScreen"
         android:name="uz.gita.latizx.onlinemarketexam6.ui.profil.ProfileScreen"
@@ -78,5 +86,30 @@
             app:exitAnim="@android:anim/fade_in"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemsByCategoryScreen"
+        android:name="uz.gita.latizx.onlinemarketexam6.ui.items.ItemsByCategoryScreen"
+        android:label="ItemsByCategoryScreen"
+        tools:layout="@layout/screen_items_by_category">
+        <argument
+            android:name="categoryId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_itemsByCategoryScreen_to_addItemScreen"
+            app:destination="@id/addItemScreen"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/addItemScreen"
+        android:name="uz.gita.latizx.onlinemarketexam6.ui.add_item.AddItemScreen"
+        android:label="AddItemScreen"
+        tools:layout="@layout/screen_add_item">
+        <argument
+            android:name="categoryId"
+            app:argType="long" />
     </fragment>
 </navigation>

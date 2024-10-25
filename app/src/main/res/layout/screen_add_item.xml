@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:src="@drawable/ic_left"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_title_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_bold"
+            android:text="Product qo'shish"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center">
+
+            <TextView
+                style="@style/style_text_presonal_info"
+                android:text="Name product"
+                app:layout_constraintBottom_toTopOf="@+id/input_name_layout"
+                app:layout_constraintStart_toStartOf="@id/input_name_layout" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_name_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                app:endIconMode="clear_text"
+                app:layout_constraintBottom_toTopOf="@id/input_descriotion_layout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_input_in_profile"
+                    android:inputType="text"
+                    android:maxLength="18"
+                    android:maxLines="1"
+                    android:paddingStart="28dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                style="@style/style_text_presonal_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Descriotion"
+                app:layout_constraintBottom_toTopOf="@+id/input_descriotion_layout"
+                app:layout_constraintStart_toStartOf="@id/input_descriotion_layout" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_descriotion_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="36dp"
+                app:layout_constraintBottom_toTopOf="@id/input_price_layout"
+                app:layout_constraintEnd_toEndOf="@+id/input_name_layout"
+                app:layout_constraintStart_toStartOf="@+id/input_name_layout"
+                app:layout_constraintTop_toBottomOf="@+id/input_name_layout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_descriotion"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:background="@drawable/bg_input_in_profile"
+                    android:gravity="top|start"
+                    android:inputType="textLongMessage"
+                    android:maxLength="2"
+                    android:maxLines="1"
+                    android:paddingStart="28dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/t_price"
+                style="@style/style_text_presonal_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price priduct"
+                app:layout_constraintBottom_toTopOf="@+id/input_price_layout"
+                app:layout_constraintStart_toStartOf="@+id/input_price_layout" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_price_layout"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                app:endIconMode="clear_text"
+                app:layout_constraintBottom_toTopOf="@id/input_discount_layout"
+                app:layout_constraintEnd_toEndOf="@+id/input_descriotion_layout"
+                app:layout_constraintTop_toBottomOf="@+id/input_descriotion_layout"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_input_in_profile"
+                    android:inputType="number"
+                    android:maxLength="9"
+                    android:maxLines="1"
+                    android:paddingStart="28dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tv_discount"
+                style="@style/style_text_presonal_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Discount in percentages"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/input_discount_layout"
+                app:layout_constraintStart_toEndOf="@+id/input_discount_layout"
+                app:layout_constraintTop_toTopOf="@+id/input_discount_layout" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Discount"
+                app:layout_constraintBottom_toBottomOf="@+id/input_price_layout"
+                app:layout_constraintStart_toStartOf="@+id/input_descriotion_layout" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_discount_layout"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="20dp"
+                android:visibility="gone"
+                app:endIconMode="clear_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/input_price_layout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_discount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_input_in_profile"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:maxLines="1"
+                    android:paddingStart="28dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                style="@style/style_text_presonal_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Select image product"
+                app:layout_constraintBottom_toBottomOf="@+id/input_img"
+                app:layout_constraintEnd_toStartOf="@+id/input_img"
+                app:layout_constraintStart_toStartOf="@+id/checkbox"
+                app:layout_constraintTop_toTopOf="@+id/input_img" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/input_img"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="36dp"
+                android:scaleType="fitXY"
+                android:layout_marginEnd="32dp"
+                android:src="@drawable/ic_person"
+                app:layout_constraintBottom_toTopOf="@id/btn_save"
+                app:layout_constraintEnd_toEndOf="@+id/input_price_layout"
+                app:layout_constraintTop_toBottomOf="@+id/input_discount_layout"
+                app:passwordToggleEnabled="true" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_save"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_margin="32dp"
+                android:background="@drawable/bg_btn"
+                android:enabled="false"
+                android:fontFamily="@font/nunito_sans_regular"
+                android:text="Saqlash"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/input_img" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

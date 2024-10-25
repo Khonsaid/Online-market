@@ -49,6 +49,7 @@ class AddDialogCategory(private val list: List<Int>) : DialogFragment() {
                 onClickSaveListener?.invoke(CategoryEntity(id = 0, name = text, img = idImg))
                 dialog?.dismiss()
             }
+            btnClose.setOnClickListener { dialog?.dismiss() }
         }
     }
 

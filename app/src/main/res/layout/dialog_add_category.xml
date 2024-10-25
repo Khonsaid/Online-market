@@ -27,12 +27,18 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/item_img" />
 
+        <TextView
+            style="@style/style_text_presonal_info"
+            android:text="Category nomi"
+            app:layout_constraintBottom_toTopOf="@+id/input_name_layout_add"
+            app:layout_constraintStart_toStartOf="@id/input_name_layout_add" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_name_layout_add"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="56dp"
             android:layout_marginHorizontal="32dp"
-            android:layout_marginVertical="32dp"
             app:endIconMode="clear_text"
             app:layout_constraintBottom_toTopOf="@id/btn_add_category"
             app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +50,7 @@
                 android:id="@+id/input_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Category name"
+                android:background="@drawable/bg_input_in_profile"
                 android:inputType="text"
                 android:maxLength="18"
                 android:maxLines="1"
@@ -55,16 +61,30 @@
             android:id="@+id/btn_add_category"
             android:layout_width="0dp"
             android:layout_height="56dp"
-            android:layout_margin="32dp"
+            android:layout_marginHorizontal="32dp"
             android:background="@drawable/bg_btn"
             android:enabled="false"
             android:text="Save category"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btn_close"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/input_name_layout_add" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_close"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:background="@android:color/transparent"
+            android:paddingHorizontal="12dp"
+            android:text="Bekor qilish"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/btn_add_category"
+            app:layout_constraintStart_toStartOf="@+id/btn_add_category"
+            app:layout_constraintTop_toBottomOf="@+id/btn_add_category" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

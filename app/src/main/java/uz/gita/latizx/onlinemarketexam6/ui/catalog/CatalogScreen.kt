@@ -51,7 +51,7 @@ class CatalogScreen : Fragment(), CategoryContract.View {
     }
 
     override fun openItemByCategory(categoryEntity: CategoryEntity) {
-
+        findNavController().navigate(CatalogScreenDirections.actionCatalogScreenToItemsByCategoryScreen(categoryEntity.id))
     }
 
     override fun notifyItemChanged(position: Int) {

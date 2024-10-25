@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/mainScreen"
-        android:name="uz.gita.latizx.onlinemarketexam6.ui.home.MainScreen"
+        android:name="uz.gita.latizx.onlinemarketexam6.ui.main.MainScreen"
         android:label="MainScreen"
         tools:layout="@layout/screen_main" />
     <fragment

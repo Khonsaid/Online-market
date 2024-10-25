@@ -59,4 +59,6 @@ dependencies {
     implementation (libs.gson)
     implementation(libs.dotsindicator)
     implementation(libs.maskededittext)
+
+    implementation ("com.github.denzcoskun:ImageSlideshow:0.1.2")
 }

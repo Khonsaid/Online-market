@@ -1,29 +1,24 @@
-package uz.gita.latizx.onlinemarketexam6.ui.main
+package uz.gita.latizx.onlinemarketexam6.ui.favourite
 
-import com.denzcoskun.imageslider.models.SlideModel
 import uz.gita.latizx.onlinemarketexam6.source.room.entity.ItemEntity
 import uz.gita.latizx.onlinemarketexam6.source.room.entity.KarzinaEntity
 
-interface MainContract {
+interface FavouriteContract {
     interface Model {
-        fun getAdvertisingList(): ArrayList<SlideModel>
-        fun getAllItem(): List<ItemEntity>
+        fun getAllFavourite(): List<ItemEntity>
         fun updateItem(itemEntity: ItemEntity): Int
         fun addItemInKarzina(karzinaEntity: KarzinaEntity)
-
     }
 
     interface View {
-        fun loadAdvertising(list: ArrayList<SlideModel>)
-        fun loadItems(list: List<ItemEntity>)
+        fun lostData(list: List<ItemEntity>)
+        fun openPrevScreen()
         fun showToast(itemEntity: ItemEntity)
-        fun openNextScreen()
     }
 
     interface Presenter {
         fun clickLike(itemEntity: ItemEntity)
+        fun clickBack()
         fun clickBuy(itemEntity: ItemEntity)
-        fun filterItems(query: String?)
-        fun clickFavouriteBtn()
     }
 }

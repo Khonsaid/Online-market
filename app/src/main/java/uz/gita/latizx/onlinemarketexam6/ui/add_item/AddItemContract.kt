@@ -1,10 +1,11 @@
 package uz.gita.latizx.onlinemarketexam6.ui.add_item
 
+import android.graphics.Bitmap
 import uz.gita.latizx.onlinemarketexam6.source.room.entity.ItemEntity
 
 interface AddItemContract {
     interface Model {
-        fun saveItem(itemEntity: ItemEntity)
+        fun saveItem(itemEntity: ItemEntity): Long
     }
 
     interface View {
@@ -24,12 +25,12 @@ interface AddItemContract {
         fun clickSelectImg()
         fun clickSaveBtn(name: String, description: String, price: String, discount: String, categoryId: Long)
         fun clickBack()
+        fun setBitmap(bitmap: Bitmap)
 
         fun checkBoxListener(isSelected: Boolean)
         fun setNameListener(name: String)
         fun setDescriptionListener(description: String)
         fun setPriceListener(price: String)
         fun setDisCountNameListener(discount: String)
-        fun resultImg()
     }
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -50,15 +51,40 @@
             android:id="@+id/image_slider"
             android:layout_width="wrap_content"
             android:layout_height="200dp"
+            android:padding="16dp"
             app:iss_auto_cycle="true"
+            app:iss_corner_radius="20"
             app:iss_delay="1000"
             app:iss_period="1000"
-            app:iss_corner_radius="20"
-            android:padding="16dp"
-            app:iss_title_background="@android:color/transparent"
             app:iss_text_align="CENTER"
+            app:iss_title_background="@android:color/transparent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
+        <TextView
+            android:id="@+id/products"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:layout_marginStart="16dp"
+            android:gravity="center"
+            android:text="All Products"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/rv_main"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_slider" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="6dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/products"
+            app:spanCount="2"
+            tools:listitem="@layout/item_product" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

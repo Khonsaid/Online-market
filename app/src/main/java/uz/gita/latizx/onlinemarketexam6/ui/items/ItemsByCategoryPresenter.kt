@@ -1,6 +1,7 @@
 package uz.gita.latizx.onlinemarketexam6.ui.items
 
 import uz.gita.latizx.onlinemarketexam6.source.room.entity.ItemEntity
+import uz.gita.latizx.onlinemarketexam6.utils.toKarzinaEntity
 
 class ItemsByCategoryPresenter(private val view: ItemsByCategoryContract.View) : ItemsByCategoryContract.Presenter {
     private val model: ItemsByCategoryContract.Model = ItemsByCategoryModel()
@@ -23,5 +24,10 @@ class ItemsByCategoryPresenter(private val view: ItemsByCategoryContract.View) :
 
     override fun clickAdd() {
         view.openAddScreen(categoryId)
+    }
+
+    override fun clickBuy(itemEntity: ItemEntity) {
+        model.addItemInKarzina(itemEntity.toKarzinaEntity(1))
+        view.showToast(itemEntity)
     }
 }

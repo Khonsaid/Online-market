@@ -13,13 +13,14 @@ import androidx.room.PrimaryKey
         )
     ]
 )
-data class ItemEntity(
+data class KarzinaEntity(
     @PrimaryKey(autoGenerate = true) val id: Long,
     val name: String,
     val price: Double,
     val description: String,
     val discount: Int = 0,
-    val favourite: Int = 0,
+    val count: Int = 1,
+    val totalPrice: Double,
     val categoryId: Long,
     val image: ByteArray
 ) {
@@ -27,7 +28,7 @@ data class ItemEntity(
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
-        other as ItemEntity
+        other as KarzinaEntity
 
         return image.contentEquals(other.image)
     }

@@ -47,7 +47,15 @@
         android:id="@+id/mainScreen"
         android:name="uz.gita.latizx.onlinemarketexam6.ui.main.MainScreen"
         android:label="MainScreen"
-        tools:layout="@layout/screen_main" />
+        tools:layout="@layout/screen_main" >
+        <action
+            android:id="@+id/action_mainScreen_to_favouriteScreen"
+            app:destination="@id/favouriteScreen"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/catalogScreen"
         android:name="uz.gita.latizx.onlinemarketexam6.ui.catalog.CatalogScreen"
@@ -112,4 +120,9 @@
             android:name="categoryId"
             app:argType="long" />
     </fragment>
+    <fragment
+        android:id="@+id/favouriteScreen"
+        android:name="uz.gita.latizx.onlinemarketexam6.ui.favourite.FavouriteScreen"
+        tools:layout="@layout/favoutite_screen"
+        android:label="FavouriteScreen" />
 </navigation>

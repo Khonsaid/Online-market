@@ -1,9 +1,11 @@
 package uz.gita.latizx.onlinemarketexam6.ui.items
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -25,9 +27,26 @@ class ItemsByCategoryScreen : Fragment(), ItemsByCategoryContract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         adapter = ItemsByCategoryAdapter()
-        binding.btnAdd.setOnClickListener { presenter.clickAdd() }
+        presenter = ItemsByCategoryPresenter(this)
         presenter.getCategoryId(args.categoryId)
+        binding.rvProducts.adapter = adapter
 
+        binding.apply {
+            btnAdd.setOnClickListener { presenter.clickAdd() }
+            btnBack.setOnClickListener { presenter.clickBack() }
+        }
+
+        adapter.apply {
+            setClickItemListener { porition, itemEntity ->
+
+            }
+            setClickByListener { porition, itemEntity ->
+                presenter.clickBuy(itemEntity)
+            }
+            setChangeFavouriteStateListener { porition, itemEntity ->
+                presenter.clickLike(itemEntity)
+            }
+        }
     }
 
     override fun onDestroyView() {
@@ -45,5 +64,9 @@ class ItemsByCategoryScreen : Fragment(), ItemsByCategoryContract.View {
 
     override fun openPrevScreen() {
         findNavController().popBackStack()
+    }
+
+    override fun showToast(itemEntity: ItemEntity) {
+        Toast.makeText(requireContext(), "${itemEntity.name} karzinaga qo'shildi!", Toast.LENGTH_SHORT).show()
     }
 }

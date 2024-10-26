@@ -1,14 +1,21 @@
 package uz.gita.latizx.onlinemarketexam6.ui.add_item
 
+import android.app.Activity
+import android.content.Intent
 import android.graphics.Color
+import android.graphics.ImageDecoder
 import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
@@ -38,16 +45,15 @@ class AddItemScreen : Fragment(), AddItemContract.View {
             inputDescriotion.addTextChangedListener { presenter.setDescriptionListener(it.toString().trim()) }
 
             btnBack.setOnClickListener { presenter.clickBack() }
-            checkbox.setOnClickListener {
-                presenter.checkBoxListener(it.isSelected)
-            }
+            checkbox.setOnCheckedChangeListener { _, isChecked -> presenter.checkBoxListener(isChecked) }
+            inputImg.setOnClickListener { presenter.clickSelectImg() }
 
             btnSave.setOnClickListener {
                 presenter.clickSaveBtn(
                     name = inputName.text.toString().trim(),
-                    description = inputDescriotion.toString().trim(),
-                    price = inputPrice.toString().trim(),
-                    discount = inputDiscount.toString().trim(),
+                    description = inputDescriotion.text.toString().trim(),
+                    price = inputPrice.text.toString().trim(),
+                    discount = inputDiscount.text.toString().trim(),
                     categoryId = args.categoryId
                 )
             }
@@ -75,7 +81,7 @@ class AddItemScreen : Fragment(), AddItemContract.View {
 
     override fun showDiscount(isVisibility: Boolean) {
         binding.apply {
-            inputDiscount.visibility = if (isVisibility) View.VISIBLE else View.GONE
+            inputDiscountLayout.visibility = if (isVisibility) View.VISIBLE else View.GONE
             tvDiscount.visibility = if (isVisibility) View.VISIBLE else View.GONE
         }
     }
@@ -85,8 +91,35 @@ class AddItemScreen : Fragment(), AddItemContract.View {
     }
 
     override fun openGallery() {
-
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        galleryActivityResultLauncher.launch(intent)
     }
+
+    private val galleryActivityResultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val data = result.data
+                val imgUri = data!!.data
+
+                try {
+                    // URI dan Bitmap olish
+                    val bitmap = if (Build.VERSION.SDK_INT < 28) {
+                        MediaStore.Images.Media.getBitmap(requireContext().contentResolver, imgUri)
+                    } else {
+                        val source = ImageDecoder.createSource(requireContext().contentResolver, imgUri!!)
+                        ImageDecoder.decodeBitmap(source)
+                    }
+                    binding.inputImg.setImageBitmap(bitmap)
+                    presenter.setBitmap(bitmap)
+
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    Toast.makeText(requireContext(), "Rasmni yuklashda xatolik: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
 
     override fun enableBtn(isEnable: Boolean) {
         binding.btnSave.isEnabled = isEnable

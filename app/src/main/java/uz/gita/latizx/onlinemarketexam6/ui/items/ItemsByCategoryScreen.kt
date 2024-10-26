@@ -37,13 +37,13 @@ class ItemsByCategoryScreen : Fragment(), ItemsByCategoryContract.View {
         }
 
         adapter.apply {
-            setClickItemListener { porition, itemEntity ->
-
+            setClickItemListener { _, itemEntity ->
+                presenter.clickItem(itemEntity)
             }
-            setClickByListener { porition, itemEntity ->
+            setClickByListener { _, itemEntity ->
                 presenter.clickBuy(itemEntity)
             }
-            setChangeFavouriteStateListener { porition, itemEntity ->
+            setChangeFavouriteStateListener { _, itemEntity ->
                 presenter.clickLike(itemEntity)
             }
         }
@@ -64,6 +64,10 @@ class ItemsByCategoryScreen : Fragment(), ItemsByCategoryContract.View {
 
     override fun openPrevScreen() {
         findNavController().popBackStack()
+    }
+
+    override fun openInfoScreen(itemEntity: ItemEntity) {
+        findNavController().navigate(ItemsByCategoryScreenDirections.actionItemsByCategoryScreenToInfoScreen(itemEntity.id))
     }
 
     override fun showToast(itemEntity: ItemEntity) {

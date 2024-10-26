@@ -105,8 +105,7 @@
                     android:background="@drawable/bg_input_in_profile"
                     android:gravity="top|start"
                     android:inputType="textMultiLine"
-                    android:maxLength="70"
-                    android:maxLines="5"
+                    android:maxLength="200"
                     android:paddingStart="28dp" />
             </com.google.android.material.textfield.TextInputLayout>
 

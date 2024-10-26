@@ -49,7 +49,7 @@
 
             <TextView
                 style="@style/style_text_presonal_info"
-                android:text="Full name"
+                android:text="Ismingiz"
                 app:layout_constraintBottom_toTopOf="@+id/input_full_name_layout"
                 app:layout_constraintStart_toStartOf="@id/input_full_name_layout" />
 
@@ -80,7 +80,7 @@
                 style="@style/style_text_presonal_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Your age"
+                android:text="Yoshingiz"
                 app:layout_constraintBottom_toTopOf="@+id/input_age_layout"
                 app:layout_constraintStart_toStartOf="@id/input_age_layout" />
 
@@ -110,7 +110,8 @@
                 style="@style/style_text_presonal_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Your phone"
+                android:layout_marginBottom="4dp"
+                android:text="Telefon raqamingiz"
                 app:layout_constraintBottom_toTopOf="@+id/input_phone_layout"
                 app:layout_constraintStart_toStartOf="@id/input_phone_layout" />
 
@@ -144,7 +145,7 @@
                 style="@style/style_text_presonal_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nick name"
+                android:text="Nickname"
                 app:layout_constraintBottom_toTopOf="@+id/input_nick_layout"
                 app:layout_constraintStart_toStartOf="@id/input_nick_layout" />
 

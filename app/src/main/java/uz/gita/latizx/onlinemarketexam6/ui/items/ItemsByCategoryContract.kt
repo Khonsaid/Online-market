@@ -14,6 +14,7 @@ interface ItemsByCategoryContract {
         fun lostData(list: List<ItemEntity>)
         fun openAddScreen(categoryId: Long)
         fun openPrevScreen()
+        fun openInfoScreen(itemEntity: ItemEntity)
         fun showToast(itemEntity: ItemEntity)
     }
 
@@ -23,5 +24,6 @@ interface ItemsByCategoryContract {
         fun clickAdd()
         fun clickLike(itemEntity: ItemEntity)
         fun clickBuy(itemEntity: ItemEntity)
+        fun clickItem(itemEntity: ItemEntity)
     }
 }

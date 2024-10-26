@@ -30,7 +30,6 @@ class InfoScreen : Fragment(), InfoContract.View {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        Log.d("TTT", "onViewCreated: ${args.itemId}")
         presenter = InfoPresenter(this, args.itemId)
 
         binding.apply {
@@ -54,6 +53,7 @@ class InfoScreen : Fragment(), InfoContract.View {
             icBasket.setImageResource(if (itemData.favourite == 0) R.drawable.ic_lice0 else R.drawable.ic_like1)
             productName.text = itemData.name
             productDesc.text = itemData.description
+            itemImgProduct.setImageBitmap(BitmapConverter.byteArrayToBitmap(itemData.image))
 
             if (itemData.discount > 0) {
                 val priceOne = (itemData.price - ((itemData.price * itemData.discount) / 100)).toInt()
@@ -65,8 +65,6 @@ class InfoScreen : Fragment(), InfoContract.View {
                 tvTotalBottom.text = "${itemData.price.toInt().toString().formatWithSeparator()} so'm"
                 tvTotalBottom.paintFlags = productPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
 
-                itemImgProduct.setImageBitmap(BitmapConverter.byteArrayToBitmap(itemData.image))
-
                 cvAksiya.visibility = View.VISIBLE
                 tvFoiz.visibility = View.VISIBLE
 
@@ -74,27 +72,28 @@ class InfoScreen : Fragment(), InfoContract.View {
                     itemData.discount > 60 -> {
                         cvAksiya.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#004CFF"))
                         tvAksiya.text = "Mega Aksiya"
-                        tvFoiz.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#004CFF"))
+                        cvFoiz.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#F4488D"))
                         tvFoiz.text = "-${itemData.discount}%"
                     }
 
                     itemData.discount > 40 -> {
-                        cvAksiya.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#004CFF"))
-                        tvAksiya.text = "Mega Aksiya"
-                        tvFoiz.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#004CFF"))
+                        cvAksiya.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#7000FF"))
+                        tvAksiya.text = "Eksklyuziv"
+                        cvFoiz.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#004CFF"))
                         tvFoiz.text = "-${itemData.discount}%"
                     }
 
                     else -> {
                         cvAksiya.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#3B007D"))
                         tvAksiya.text = "Aksiya"
-                        tvFoiz.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#004CFF"))
+                        cvFoiz.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#A0ABFF"))
                         tvFoiz.text = "-${itemData.discount}%"
                     }
                 }
             } else {
                 productOldPrice.visibility = View.INVISIBLE
                 productPrice.text = "${itemData.price.toInt().toString().formatWithSeparator()} so'm"
+                tvCountBottom.text = "${itemData.price.toString().formatWithSeparator()} so'm"
                 cvAksiya.visibility = View.INVISIBLE
                 tvFoiz.visibility = View.INVISIBLE
             }
@@ -106,6 +105,7 @@ class InfoScreen : Fragment(), InfoContract.View {
     }
 
     override fun changeLike(like: Int) {
+        Log.d("TTT", "changeLike: $like")
         binding.icBasket.setImageResource(if (like == 0) R.drawable.ic_lice0 else R.drawable.ic_like1)
     }
 

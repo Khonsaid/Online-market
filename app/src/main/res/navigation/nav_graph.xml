@@ -57,7 +57,11 @@
             app:popExitAnim="@android:anim/slide_out_right" />
         <action
             android:id="@+id/action_mainScreen_to_infoScreen"
-            app:destination="@id/infoScreen" />
+            app:destination="@id/infoScreen"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/catalogScreen"
@@ -75,7 +79,11 @@
             android:id="@+id/action_catalogScreen_to_mainScreen"
             app:destination="@id/mainScreen"
             app:popUpTo="@id/nav_graph"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/profileScreen"
@@ -123,6 +131,14 @@
             app:exitAnim="@android:anim/slide_out_right"
             app:popEnterAnim="@android:anim/slide_in_left"
             app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_itemsByCategoryScreen_to_infoScreen"
+            app:destination="@id/infoScreen"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
+            />
     </fragment>
     <fragment
         android:id="@+id/addItemScreen"
@@ -142,10 +158,18 @@
             android:id="@+id/action_favouriteScreen_to_mainScreen"
             app:destination="@id/mainScreen"
             app:popUpTo="@id/nav_graph"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"/>
         <action
             android:id="@+id/action_favouriteScreen_to_infoScreen"
-            app:destination="@id/infoScreen" />
+            app:destination="@id/infoScreen"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/basketScreen"
@@ -162,7 +186,11 @@
             app:argType="long" />
         <action
             android:id="@+id/action_infoScreen_to_basketScreen"
-            app:destination="@id/basketScreen" />
+            app:destination="@id/basketScreen"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"/>
     </fragment>
 
 </navigation>

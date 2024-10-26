@@ -38,7 +38,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card" />
-
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="200dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_bubbles"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
@@ -46,7 +53,7 @@
         android:fontFamily="@font/nunito_sans_regular"
         android:gravity="center"
         android:paddingHorizontal="36dp"
-        android:text="Beautiful eCommerce UI Kit for your online store"
+        android:text="Onlayn do'koningiz uchun chiroyli elektron tijorat UI to'plami"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,7 +67,7 @@
         android:layout_marginHorizontal="32dp"
         android:background="@drawable/bg_btn"
         android:fontFamily="@font/nunito_sans_regular"
-        android:text="Let's get started"
+        android:text="Keling, boshlaymiz"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="18sp"

@@ -25,10 +25,14 @@ class MainPresenter(private val view: MainContract.View) : MainContract.Presente
 
     override fun filterItems(query: String?) {
         val filterList = if (!query.isNullOrEmpty()) {
+            view.showImageSlider(true)
             model.getAllItem().filter { item ->
                 item.name.contains(query, ignoreCase = true)
             }
-        } else model.getAllItem()
+        } else {
+            view.showImageSlider(false)
+            model.getAllItem()
+        }
         view.showPlaceHolder(filterList.isEmpty())
         view.loadItems(filterList)
     }

@@ -21,12 +21,12 @@ class LoginPresenter(private val view: LoginContract.View) : LoginContract.Prese
     override fun setFullNameListener(fullName: String) {
         isFullNameValid = when {
             fullName.isEmpty() -> {
-                view.errorFullName("Full name cannot be empty!")
+                view.errorFullName("To'liq ism bo'sh bo'lishi mumkin emas!")
                 false
             }
 
             fullName.length < 3 -> {
-                view.errorFullName("Full name must be longer than 3 characters!")
+                view.errorFullName("To'liq ism 3 ta belgidan oshmasligi kerak!")
                 false
             }
 
@@ -42,12 +42,12 @@ class LoginPresenter(private val view: LoginContract.View) : LoginContract.Prese
         if (age.isBlank() || age.isEmpty()) return
         isAgeValid = when {
             age.toInt() < 11 -> {
-                view.errorAge("Age must be at least 11")
+                view.errorAge("Yoshi kamida 11 bo'lishi kerak")
                 false
             }
 
             age.toInt() > 79 -> {
-                view.errorAge("Age must be less than 80")
+                view.errorAge("Yoshi 80 dan kam bo'lishi")
                 false
             }
 
@@ -62,12 +62,12 @@ class LoginPresenter(private val view: LoginContract.View) : LoginContract.Prese
     override fun setPhoneListener(phone: String) {
         isPhoneValid = when {
             !phone.matches(".*[0-9].*".toRegex()) -> {
-                view.errorPhone("Phone number must contain only digits")
+                view.errorPhone("Faqat raqamlardan iborat bo'lishi kerak")
                 false
             }
 
             !phone.startsWith("998") -> {
-                view.errorPhone("Phone number must start with 998")
+                view.errorPhone("Telefon raqami 998 bilan boshlanishi kerak")
                 false
             }
 
@@ -82,12 +82,12 @@ class LoginPresenter(private val view: LoginContract.View) : LoginContract.Prese
     override fun setNickNameListener(nickName: String) {
         isNickNameValid = when {
             nickName.isEmpty() -> {
-                view.errorNickName("Nickname cannot be empty!")
+                view.errorNickName("Nickname bo'sh bo'lishi mumkin emas!")
                 false
             }
 
             nickName.length < 3 -> {
-                view.errorNickName("Nickname must be longer than 3 characters!")
+                view.errorNickName("Nickname 3 ta belgidan oshmasligi kerak!!")
                 false
             }
 
@@ -102,27 +102,27 @@ class LoginPresenter(private val view: LoginContract.View) : LoginContract.Prese
     override fun setPasswordListener(password: String) {
         isPasswordValid = when {
             password.isBlank() -> {
-                view.errorPassword("Password cannot be empty!")
+                view.errorPassword("Parol bo'sh bo'lishi mumkin emas!")
                 false
             }
 
             password.length < 6 -> {
-                view.errorPassword("Password must be longer than 6 characters!")
+                view.errorPassword("Parol 6 ta belgidan oshmasligi kerak!")
                 false
             }
 
             !password.matches(".*[A-Z].*".toRegex()) -> {
-                view.errorPassword("Password must contain at least one uppercase letter!")
+                view.errorPassword("Parol kamida bitta katta harfdan iborat bo'lishi kerak!")
                 false
             }
 
             !password.matches(".*[a-z].*".toRegex()) -> {
-                view.errorPassword("Password must contain at least one lowercase letter!")
+                view.errorPassword("Parol kamida bitta kichik harfdan iborat bo'lishi kerak!")
                 false
             }
 
             !password.matches(".*[0-9].*".toRegex()) -> {
-                view.errorPassword("Password must contain at least one number!")
+                view.errorPassword("Parolda kamida bitta raqam bo'lishi kerak!")
                 false
             }
 

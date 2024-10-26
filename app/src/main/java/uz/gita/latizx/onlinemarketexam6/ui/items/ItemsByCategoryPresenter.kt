@@ -30,4 +30,8 @@ class ItemsByCategoryPresenter(private val view: ItemsByCategoryContract.View) :
         model.addItemInKarzina(itemEntity.toKarzinaEntity(1))
         view.showToast(itemEntity)
     }
+
+    override fun clickItem(itemEntity: ItemEntity) {
+        view.openInfoScreen(itemEntity)
+    }
 }

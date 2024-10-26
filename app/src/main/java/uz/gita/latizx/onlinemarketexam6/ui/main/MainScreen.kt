@@ -81,6 +81,10 @@ class MainScreen : Fragment(), MainContract.View {
         binding.placeHolder.visibility = if (isVisible) View.VISIBLE else View.GONE
     }
 
+    override fun showImageSlider(isVisible: Boolean) {
+        binding.imageSlider.visibility = if (isVisible) View.GONE else View.VISIBLE
+    }
+
     override fun openInfoScreen(itemId: Long) {
         findNavController().navigate(MainScreenDirections.actionMainScreenToInfoScreen(itemId))
     }

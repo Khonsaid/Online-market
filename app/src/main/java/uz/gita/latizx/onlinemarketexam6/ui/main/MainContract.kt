@@ -19,6 +19,7 @@ interface MainContract {
         fun showToast(itemEntity: ItemEntity)
         fun openNextScreen()
         fun showPlaceHolder(isVisible: Boolean)
+        fun showImageSlider(isVisible: Boolean)
         fun openInfoScreen(itemId:Long)
     }
 

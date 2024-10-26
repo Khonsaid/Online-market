@@ -1,5 +1,6 @@
 package uz.gita.latizx.onlinemarketexam6.ui.basket
 
+import android.util.Log
 import uz.gita.latizx.onlinemarketexam6.source.room.entity.KarzinaEntity
 
 class BasketPresenter(private val view: BasketContract.View) : BasketContract.Presenter {
@@ -17,6 +18,7 @@ class BasketPresenter(private val view: BasketContract.View) : BasketContract.Pr
 
     override fun clickMinus(karzinaEntity: KarzinaEntity) {
         val count = karzinaEntity.count
+        Log.d("TTT", "clickMinus: $count")
         if (count > 1) {
             model.updateItemKorzina(karzinaEntity.copy(count = count - 1))
             loadData()
@@ -25,6 +27,7 @@ class BasketPresenter(private val view: BasketContract.View) : BasketContract.Pr
 
     override fun clickLongMinus(karzinaEntity: KarzinaEntity) {
         val count = karzinaEntity.count
+        Log.d("TTT", "clickLongMinus: $count")
         if (count > 1) {
             model.updateItemKorzina(karzinaEntity.copy(count = 1))
             loadData()

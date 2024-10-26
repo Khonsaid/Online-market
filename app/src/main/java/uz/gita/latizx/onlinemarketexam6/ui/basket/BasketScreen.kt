@@ -89,7 +89,9 @@ class BasketScreen : Fragment(), BasketContract.View {
             tvCountBottom.text = "$countKorzina ta mahsulot"
 
             tvPrice.text = "${totalSum.toString().formatWithSeparator()} so'm"
-            tvDiscount.text = "-${(totalSum - totalSumWithDiscount).toString().formatWithSeparator()} so'm"
+
+            val discount = totalSum - totalSumWithDiscount
+            tvDiscount.text = if (discount > 0) "-${discount.toString().formatWithSeparator()} so'm" else "${discount.toString().formatWithSeparator()} so'm"
             tvTotal.text = "${totalSumWithDiscount.toString().formatWithSeparator()} so'm"
             tvTotalBottom.text = "${totalSumWithDiscount.toString().formatWithSeparator()} so'm"
         }

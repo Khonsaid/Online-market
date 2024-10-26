@@ -33,7 +33,7 @@ class BasketAdapter : ListAdapter<KarzinaEntity, BasketAdapter.BasketVH>(BasketD
                 btnPlus.setOnClickListener { onClickPlus?.invoke(getItem(adapterPosition)) }
                 btnMinus.setOnClickListener { onClickMinus?.invoke(getItem(adapterPosition)) }
                 btnX.setOnClickListener { onClickX?.invoke(getItem(adapterPosition)) }
-                btnMinus.setOnLongClickListener { onLongClickMinus?.invoke(getItem(adapterPosition)); true }
+                btnMinus.setOnLongClickListener { onLongClickMinus?.invoke(getItem(adapterPosition)); false }
             }
         }
 
@@ -47,7 +47,8 @@ class BasketAdapter : ListAdapter<KarzinaEntity, BasketAdapter.BasketVH>(BasketD
                     val priceOne =
                         (getItem(adapterPosition).price - ((getItem(adapterPosition).price * getItem(adapterPosition).discount) / 100)).toInt()
                     productPriceOne.text = "${priceOne.toString().formatWithSeparator()} so'm"
-                    productOldPrice.text = "${(getItem(adapterPosition).price * getItem(adapterPosition).count).toInt().toString().formatWithSeparator()} so'm"
+                    productOldPrice.text =
+                        "${(getItem(adapterPosition).price * getItem(adapterPosition).count).toInt().toString().formatWithSeparator()} so'm"
                     productOldPrice.paintFlags = productPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
                     productPrice.text =
                         "${(priceOne * getItem(adapterPosition).count).toString().formatWithSeparator()} so'm"
@@ -72,7 +73,8 @@ class BasketAdapter : ListAdapter<KarzinaEntity, BasketAdapter.BasketVH>(BasketD
                 } else {
                     productOldPrice.visibility = View.INVISIBLE
                     productPriceOne.text = "${getItem(adapterPosition).price.toInt().toString().formatWithSeparator()} so'm"
-                    productPrice.text = "${getItem(adapterPosition).price.toInt().toString().formatWithSeparator()} so'm"
+                    productPrice.text =
+                        "${(getItem(adapterPosition).price * getItem(adapterPosition).count).toInt().toString().formatWithSeparator()} so'm"
                     cvAksiya.visibility = View.INVISIBLE
                 }
                 orderImg.setImageBitmap(BitmapConverter.byteArrayToBitmap(getItem(adapterPosition).image))

@@ -2,12 +2,15 @@ package uz.gita.latizx.onlinemarketexam6.ui
 
 import android.os.Bundle
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.forEach
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import uz.gita.latizx.onlinemarketexam6.R
@@ -43,11 +46,39 @@ class MainActivity : AppCompatActivity() {
         binding.btmNavView.let { bottomNav ->
             navController.addOnDestinationChangedListener { _, destination, _ ->
                 when (destination.id) {
-                    R.id.mainScreen, R.id.catalogScreen, R.id.profileScreen -> bottomNav.visibility = View.VISIBLE
+                    R.id.mainScreen, R.id.catalogScreen, R.id.profileScreen, R.id.basketScreen -> bottomNav.visibility = View.VISIBLE
                     else -> {
                         bottomNav.visibility = View.GONE
                     }
                 }
+            }
+        }
+        val fadeNavOptions = NavOptions.Builder()
+            .setEnterAnim(android.R.anim.fade_in)
+            .setExitAnim(android.R.anim.fade_out)
+            .setPopEnterAnim(android.R.anim.fade_in)
+            .setPopExitAnim(android.R.anim.fade_out)
+            .build()
+
+        binding.btmNavView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.mainScreen -> {
+                    navController.navigate(R.id.mainScreen, null, fadeNavOptions) // yoki fadeNavOptions
+                    true
+                }
+                R.id.catalogScreen -> {
+                    navController.navigate(R.id.catalogScreen, null, fadeNavOptions)
+                    true
+                }
+                R.id.profileScreen -> {
+                    navController.navigate(R.id.profileScreen, null, fadeNavOptions)
+                    true
+                }
+                R.id.basketScreen -> {
+                    navController.navigate(R.id.basketScreen, null, fadeNavOptions)
+                    true
+                }
+                else -> false
             }
         }
     }

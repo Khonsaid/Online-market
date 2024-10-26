@@ -11,9 +11,11 @@ fun ItemEntity.toKarzinaEntity(count: Int): KarzinaEntity {
         description = this.description,
         discount = this.discount,
         count = count,
-        totalPrice = this.price * count,
         categoryId = this.categoryId,
         image = this.image
     )
 }
 
+fun String.formatWithSeparator(): String {
+    return this.reversed().chunked(3).joinToString(" ").reversed()
+}

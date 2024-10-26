@@ -18,6 +18,8 @@ interface MainContract {
         fun loadItems(list: List<ItemEntity>)
         fun showToast(itemEntity: ItemEntity)
         fun openNextScreen()
+        fun showPlaceHolder(isVisible: Boolean)
+        fun openInfoScreen(itemId:Long)
     }
 
     interface Presenter {
@@ -25,5 +27,6 @@ interface MainContract {
         fun clickBuy(itemEntity: ItemEntity)
         fun filterItems(query: String?)
         fun clickFavouriteBtn()
+        fun clickItem(itemId: Long)
     }
 }

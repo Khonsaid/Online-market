@@ -33,13 +33,13 @@ class MainScreen : Fragment(), MainContract.View {
         binding.btnFavourite.setOnClickListener { presenter.clickFavouriteBtn() }
 
         adapter.apply {
-            setClickItemListener { porition, itemEntity ->
-
+            setClickItemListener { _, itemEntity ->
+                presenter.clickItem(itemEntity.id)
             }
-            setClickByListener { porition, itemEntity ->
+            setClickByListener { _, itemEntity ->
                 presenter.clickBuy(itemEntity)
             }
-            setChangeFavouriteStateListener { porition, itemEntity ->
+            setChangeFavouriteStateListener { _, itemEntity ->
                 presenter.clickLike(itemEntity)
             }
         }
@@ -75,6 +75,14 @@ class MainScreen : Fragment(), MainContract.View {
 
     override fun openNextScreen() {
         findNavController().navigate(MainScreenDirections.actionMainScreenToFavouriteScreen())
+    }
+
+    override fun showPlaceHolder(isVisible: Boolean) {
+        binding.placeHolder.visibility = if (isVisible) View.VISIBLE else View.GONE
+    }
+
+    override fun openInfoScreen(itemId: Long) {
+        findNavController().navigate(MainScreenDirections.actionMainScreenToInfoScreen(itemId))
     }
 
     override fun onDestroyView() {

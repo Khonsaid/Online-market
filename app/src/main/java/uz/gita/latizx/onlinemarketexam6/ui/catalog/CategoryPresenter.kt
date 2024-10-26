@@ -22,7 +22,7 @@ class CategoryPresenter(private val view: CategoryContract.View) : CategoryContr
         val idCategory = model.saveCategory(categoryEntity)
         if (idCategory > 0) {
             list.add(categoryEntity.copy(id = idCategory))
-            view.notifyItemChanged(list.lastIndex)
+            view.notifyItemChanged(list.lastIndex, model.getAllCategory().isNotEmpty())
             view.showSuccessDialog()
         }
     }

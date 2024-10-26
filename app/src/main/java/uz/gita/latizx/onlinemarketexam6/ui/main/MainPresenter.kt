@@ -8,7 +8,8 @@ class MainPresenter(private val view: MainContract.View) : MainContract.Presente
 
     init {
         view.loadAdvertising(model.getAdvertisingList())
-        view.loadItems(model.getAllItem())
+        view.loadItems(model.getAllItem().shuffled())
+        view.showPlaceHolder(model.getAllItem().isEmpty())
     }
 
     override fun clickLike(itemEntity: ItemEntity) {
@@ -28,10 +29,15 @@ class MainPresenter(private val view: MainContract.View) : MainContract.Presente
                 item.name.contains(query, ignoreCase = true)
             }
         } else model.getAllItem()
+        view.showPlaceHolder(filterList.isEmpty())
         view.loadItems(filterList)
     }
 
     override fun clickFavouriteBtn() {
         view.openNextScreen()
+    }
+
+    override fun clickItem(itemId: Long) {
+        view.openInfoScreen(itemId)
     }
 }

@@ -20,7 +20,6 @@ data class KarzinaEntity(
     val description: String,
     val discount: Int = 0,
     val count: Int = 1,
-    val totalPrice: Double,
     val categoryId: Long,
     val image: ByteArray
 ) {

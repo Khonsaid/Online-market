@@ -14,11 +14,13 @@ interface FavouriteContract {
         fun lostData(list: List<ItemEntity>)
         fun openPrevScreen()
         fun showToast(itemEntity: ItemEntity)
+        fun openInfoScreen(itemId:Long)
     }
 
     interface Presenter {
         fun clickLike(itemEntity: ItemEntity)
         fun clickBack()
         fun clickBuy(itemEntity: ItemEntity)
+        fun clickItem(itemId: Long)
     }
 }

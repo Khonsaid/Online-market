@@ -13,7 +13,7 @@ interface CategoryContract {
         fun loadData(list: ArrayList<CategoryEntity>)
         fun openItemByCategory(categoryEntity: CategoryEntity)
         fun showDialogAdd(list: List<Int>)
-        fun notifyItemChanged(position: Int)
+        fun notifyItemChanged(position: Int, isVisible: Boolean)
         fun showSuccessDialog()
     }
 

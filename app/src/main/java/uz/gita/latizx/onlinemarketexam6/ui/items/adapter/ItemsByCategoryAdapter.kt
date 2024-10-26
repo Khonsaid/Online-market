@@ -14,6 +14,7 @@ import uz.gita.latizx.onlinemarketexam6.R
 import uz.gita.latizx.onlinemarketexam6.databinding.ItemProductBinding
 import uz.gita.latizx.onlinemarketexam6.source.room.entity.ItemEntity
 import uz.gita.latizx.onlinemarketexam6.utils.BitmapConverter
+import uz.gita.latizx.onlinemarketexam6.utils.formatWithSeparator
 
 class ItemsByCategoryAdapter : ListAdapter<ItemEntity, ItemsByCategoryAdapter.ItemsByCategoryVH>(ItemsByCategoryDiffUtil) {
     private var changeFavouriteStateListener: ((Int, ItemEntity) -> Unit)? = null
@@ -43,9 +44,9 @@ class ItemsByCategoryAdapter : ListAdapter<ItemEntity, ItemsByCategoryAdapter.It
                 productName.text = getItem(adapterPosition).name
                 productCategory.text = getItem(adapterPosition).description
                 if (getItem(adapterPosition).discount > 0) {
-                    productPrice.text = "${getItem(adapterPosition).price} so'm"
+                    productPrice.text ="${getItem(adapterPosition).price.toInt().toString().formatWithSeparator()} so'm"
                     productPrice.paintFlags = productPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-                    productNewPrice.text = "${(getItem(adapterPosition).price * getItem(adapterPosition).discount) / 100}"
+                    productNewPrice.text = (getItem(adapterPosition).price - (getItem(adapterPosition).price * getItem(adapterPosition).discount) / 100).toInt().toString().formatWithSeparator()
 
                     cvAksiya.visibility = View.VISIBLE
                     when {
@@ -66,7 +67,7 @@ class ItemsByCategoryAdapter : ListAdapter<ItemEntity, ItemsByCategoryAdapter.It
                     }
                 } else {
                     productPrice.visibility = View.INVISIBLE
-                    productNewPrice.text = "${getItem(adapterPosition).price}"
+                    productNewPrice.text = "${getItem(adapterPosition).price.toInt()}".formatWithSeparator()
                     cvAksiya.visibility = View.INVISIBLE
                 }
                 itemImg.setImageBitmap(BitmapConverter.byteArrayToBitmap(getItem(adapterPosition).image))

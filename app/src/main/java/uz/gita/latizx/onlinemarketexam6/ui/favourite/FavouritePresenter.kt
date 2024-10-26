@@ -7,7 +7,7 @@ class FavouritePresenter(private val view: FavouriteContract.View) : FavouriteCo
     private val model: FavouriteContract.Model = FavouriteModel()
 
     init {
-        view.lostData(model.getAllFavourite())
+        view.lostData(model.getAllFavourite().shuffled())
     }
 
     override fun clickLike(itemEntity: ItemEntity) {
@@ -23,5 +23,9 @@ class FavouritePresenter(private val view: FavouriteContract.View) : FavouriteCo
     override fun clickBuy(itemEntity: ItemEntity) {
         model.addItemInKarzina(itemEntity.toKarzinaEntity(1))
         view.showToast(itemEntity)
+    }
+
+    override fun clickItem(itemId: Long) {
+        view.openInfoScreen(itemId)
     }
 }

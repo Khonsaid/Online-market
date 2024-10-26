@@ -16,6 +16,9 @@ interface ItemDao {
     @Query("SELECT * FROM ItemEntity WHERE categoryId = :categoryId")
     fun getItemsByCategory(categoryId: Long): List<ItemEntity>
 
+    @Query("SELECT * FROM ItemEntity WHERE id = :itemId LIMIT 1")
+    fun getItemById(itemId: Long): List<ItemEntity>
+
     @Query("SELECT * FROM ItemEntity WHERE favourite = 1")
     fun getAllFavourite(): List<ItemEntity>
 

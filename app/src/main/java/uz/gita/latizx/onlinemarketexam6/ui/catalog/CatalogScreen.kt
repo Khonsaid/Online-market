@@ -45,7 +45,10 @@ class CatalogScreen : Fragment(), CategoryContract.View {
     }
 
     override fun loadData(list: ArrayList<CategoryEntity>) {
-        binding.cvLogo.visibility = if (list.isEmpty()) View.VISIBLE else View.GONE
+        binding.apply {
+            cvLogo.visibility = if (list.isEmpty()) View.VISIBLE else View.GONE
+            text.visibility = if (list.isEmpty()) View.VISIBLE else View.GONE
+        }
         adapter = CategoryAdapter(list)
         binding.rvCatalog.adapter = adapter
     }
@@ -54,7 +57,11 @@ class CatalogScreen : Fragment(), CategoryContract.View {
         findNavController().navigate(CatalogScreenDirections.actionCatalogScreenToItemsByCategoryScreen(categoryEntity.id))
     }
 
-    override fun notifyItemChanged(position: Int) {
+    override fun notifyItemChanged(position: Int, isVisible:Boolean) {
+        binding.apply {
+            cvLogo.visibility = View.GONE
+            text.visibility = View.GONE
+        }
         adapter.notifyItemChanged(position)
     }
 
